@@ -9,10 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -26,6 +24,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vedianbunka.lab_week_09.ui.theme.LAB_WEEK_09Theme
+import com.vedianbunka.lab_week_09.ui.theme.OnBackgroundItemText
+import com.vedianbunka.lab_week_09.ui.theme.OnBackgroundTitleText
+import com.vedianbunka.lab_week_09.ui.theme.PrimaryTextButton
 
 //Previously we extend AppCompatActivity,
 //now we extend ComponentActivity
@@ -109,51 +110,45 @@ fun HomeContent(
 //to add padding horizontally and vertically
 //or Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp)
 //to add padding to each side
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize(),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxSize(),
 //Alignment.CenterHorizontally is used to align the Column horizontally
 //You can also use verticalArrangement = Arrangement.Center to align the Column vertically
-            horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-            Text(
-                text = stringResource(
-                    id = R.string.enter_item
+                OnBackgroundTitleText(
+                    text = stringResource(
+                        id = R.string.enter_item
+                    )
                 )
-            )
+
 //Here, we use TextField to display a text input field
-            TextField(
+                TextField(
 //Set the value of the input field
-                value = inputField.name,
+                    value = inputField.name,
 //Set the keyboard type of the input field
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text
-                ),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text
+                    ),
 //Set what happens when the value of the input field changes
-                        onValueChange = {
+                    onValueChange = {
 //Here, we call the onInputValueChange lambda function
 //and pass the value of the input field as a parameter
 //This is so that we can update the value of the inputField
-                    onInputValueChange(it)
-                }
-            )
+                        onInputValueChange(it)
+                    }
+                )
 //Here, we use Button to display a button
 //the onClick parameter is used to set what happens when the button is clicked
-            Button(onClick = {
-//Here, we call the onButtonClick lambda function
-//This is so that we can add the inputField value to the
-                listData
-//and reset the value of the inputField
-                onButtonClick()
-            }) {
-//Set the text of the button
-                Text(
+                PrimaryTextButton(
                     text = stringResource(
                         id = R.string.button_click
                     )
-                )
+                ) {
+                    onButtonClick()
+                }
             }
-        }
         }
 //Here, we use items to display a list of items inside the LazyColumn
 //This is the RecyclerView replacement
@@ -165,7 +160,7 @@ fun HomeContent(
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = item.name)
+                OnBackgroundItemText(text = item.name)
             }
         }
     }
