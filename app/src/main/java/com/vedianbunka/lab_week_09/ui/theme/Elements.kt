@@ -36,15 +36,15 @@ fun ItemText(text: String, color: Color) {
 }
 //UI Element for displaying a button
 @Composable
-fun PrimaryTextButton(text: String, onClick: () -> Unit) {
+fun PrimaryTextButton(text: String, enabled: Boolean = true, onClick: () -> Unit) {
     TextButton(text = text,
         textColor = Color.White,
-        onClick = onClick
+        onClick = onClick, enabled=enabled
     )
 }
 //Here, we use the labelMedium style from the typography
 @Composable
-fun TextButton(text: String, textColor: Color, onClick: () -> Unit) {
+fun TextButton(text: String, textColor: Color, enabled: Boolean = true, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier.padding(8.dp),
@@ -52,7 +52,8 @@ fun TextButton(text: String, textColor: Color, onClick: () -> Unit) {
             .buttonColors(
                 containerColor = Color.DarkGray,
                 contentColor = textColor
-            )
+            ),
+        enabled = enabled
     ) {
         Text(text = text, style =
             MaterialTheme.typography.labelMedium)
