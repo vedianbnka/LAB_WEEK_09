@@ -20,7 +20,7 @@ Part 4
 
 Tugas
 
-Ketika input kosong:
+Ketika input kosong (button di disable):
 
 <img width="295" height="623" alt="Screenshot 2025-11-07 at 17 41 17" src="https://github.com/user-attachments/assets/13c328c5-5a19-41b3-ada9-4b7abbb61fbc" />
 
